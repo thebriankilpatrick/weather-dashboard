@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather Dashboard</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        
+    </head>
+
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <nav class="navbar navbar-light bg-light" id="nav">
+            <a class="navbar-brand">Weather Dashboard</a>
+            <form class="form-inline">
+              <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search for city" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
+            </form>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush" id="cityList">
+                        <li class="list-group-item">Richmond</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-9">
+                    <div class="weatherContainer">
+                        <h2 id="cityText"></h2>
+                        <p id="tempText"></p>
+                        <p id="humidityText"></p>
+                        <p id="windText"></p>
+                        <p id="uVText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="assets/script.js"></script>
+    </body>
+</html>
