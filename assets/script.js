@@ -9,6 +9,11 @@ function getWeather() {
     }).then(function(response) {
         console.log(response);
         $("#cityText").text(response.name);
+        var iconCode = response.weather[0].icon;
+        console.log(iconCode);
+        var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+        $("#iconContainer").append("<img id='iconImage'>");
+        $("#iconImage").attr("src", iconURL);
         var tempKelvin = response.main.temp;
         var tempFahr = (((tempKelvin - 273.15) * 1.8) + 32);
         $("#tempText").text("Temperature: " + tempFahr.toFixed() + "\xB0" + "F");
