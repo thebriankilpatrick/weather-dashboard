@@ -2,13 +2,19 @@
     margin-bottom: 20px;
 }
 
+.list-group-item:hover {
+    cursor: pointer;
+}
+
 .weatherContainer {
+    margin-left: 10px;
     padding-left: 20px;
+    /* Add a border if you plan on hard coding a city as the default. */
 }
 
 
 @media only screen and (max-width: 575px) {
-    #searchInput {
+    #searchInput {  /* For Navbar responsiveness */
         width: 200px;
     }
 }

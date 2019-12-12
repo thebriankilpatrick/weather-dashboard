@@ -14,6 +14,7 @@ function getWeather() {
         $("#tempText").text("Temperature: " + tempFahr.toFixed() + "\xB0" + "F");
         $("#humidityText").text("Humidity: " + response.main.humidity + "%");
         $("#windText").text("Wind speed: " + response.wind.speed + "mph");
+        $(".weatherContainer").css("border", "solid 1px lightgray");
     })
 
     $.ajax({   // I keep getting the error that access is "blocked"
@@ -59,5 +60,12 @@ function generateList() {
         $("#cityList").append(newListItem);
     }
 }
+
+// This is to create a click handler on the saved city list
+// Clicked on a city in the list, will display that city's weather
+$(document).on("click", ".list-group-item", function() {
+    $("#searchInput").val($(this).text());
+    getWeather();
+});
 
 generateList();
