@@ -1,7 +1,6 @@
 // Function for current weather
 function getWeather() {  
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + $("#searchInput").val() + ",us&appid=ef5a1aac4687a7fff928e96832672dc8";
-    var queryUVURL = "api.openweathermap.org/data/2.5/uvi?q=" + $("#searchInput").val() + ",us&appid=ef5a1aac4687a7fff928e96832672dc8";
 
     $.ajax({
         url: queryURL,
@@ -10,7 +9,6 @@ function getWeather() {
         console.log(response);
         $("#cityText").text(response.name);
         var iconCode = response.weather[0].icon;
-        console.log(iconCode);
         var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
         $("#iconContainer").append("<img id='iconImage'>");
         $("#iconImage").attr("src", iconURL);
@@ -20,13 +18,18 @@ function getWeather() {
         $("#humidityText").text("Humidity: " + response.main.humidity + "%");
         $("#windText").text("Wind speed: " + response.wind.speed + "mph");
         $(".weatherContainer").css("border", "solid 1px lightgray");
-    })
 
-    $.ajax({   // I keep getting the error that access is "blocked"
+        var lon = response.coord.lon;
+        var lat = response.coord.lat;
+
+        var queryUVURL = "http://api.openweathermap.org/data/2.5/uvi?appid=942ae6ca747eb423646036b5684169fa&lat=" + lat + "&lon=" + lon;
+
+        $.ajax({   // I keep getting the error that access is "blocked"
         url: queryUVURL,
         method: "GET"
-    }).then(function(response){
-        console.log(response);
+        }).then(function(response) {
+            $("#uVText").text("UV Index: " + response.value);
+        })
     })
 }
 
