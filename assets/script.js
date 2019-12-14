@@ -110,3 +110,14 @@ $(document).on("click", ".list-group-item", function() {
 });
 
 generateList();
+
+// Displays the last searched city's forecast on page load
+function lastForecasted() {
+    var last = parseInt(localStorage.getItem("index"));
+    last -= 1;
+    var result = localStorage.getItem("userInput" + last);
+    $("#searchInput").val(result).text();
+    getWeather();
+}
+
+lastForecasted();
