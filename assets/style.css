@@ -7,19 +7,18 @@
 }
 
 .weatherContainer {
+    margin-top: 10px;
     margin-left: 10px;
     padding-left: 20px;
-    /* Add a border if you plan on hard coding a city as the default. */
 }
 
-.forecastImage {
-    width: 50%;
-    height: auto;
+.card {
+    margin: 10px 0 0 10px;
 }
 
 
 @media only screen and (max-width: 575px) {
     #searchInput {  /* For Navbar responsiveness */
-        width: 200px;
+        width: 180px;
     }
 }

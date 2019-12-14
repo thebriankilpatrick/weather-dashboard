@@ -26,7 +26,7 @@ function getWeather() {
 
         var queryUVURL = "http://api.openweathermap.org/data/2.5/uvi?appid=942ae6ca747eb423646036b5684169fa&lat=" + lat + "&lon=" + lon;
 
-        $.ajax({   // I keep getting the error that access is "blocked"
+        $.ajax({ 
         url: queryUVURL,
         method: "GET"
         }).then(function(response) {
@@ -39,16 +39,10 @@ function getWeather() {
             url: forecastURL,
             method: "GET"
         }).then(function(response) {  
-            // FIND A WAY TO REMOVE OLD CARDS BEFORE APPLYING NEW ONES
-            // ALSO, THE LOCATION IS NOT PULLING CORRECTLY
-            // AS WELL AS THE FORECAST IMAGE
-            $("<div class='card text-white bg-info mb-3 float-left'>").remove();
-            console.log(response);
+           
             var arrayLength = response.list.length;
             for (var i = 0; i < arrayLength; i += 8) {
-                // Create bootstrap cards
-                // create content
-                // append to row
+                
                 var forecastCard = $("<div class='card text-white bg-info mb-3 float-left'>");
                 $(".forecastContainer").append(forecastCard); // See if float left works
                 var dt = response.list[i].dt_txt  // Grabbing date from forecast
@@ -58,8 +52,8 @@ function getWeather() {
                 var iconCode = response.list[i].weather[0].icon;
                 console.log(iconCode);
                 var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
-                forecastCard.append("<img class='forecastImage'>");
-                $(".forecastImage").attr("src", iconURL);
+                var forecastImage = $("<img>").attr("src", iconURL).css("width", "50%");
+                forecastCard.append(forecastImage);
                 
                 var tempKelvin = response.list[i].main.temp;
                 var tempFahr = (((tempKelvin - 273.15) * 1.8) + 32);
@@ -86,6 +80,7 @@ function getIndex() {
 }
 
 $("#searchBtn").on("click", function(event) {
+    $(".forecastContainer").empty(); // Removing forecast cards before new ones are created and appended
     event.preventDefault();
     var searchResult = $("#searchInput").val().trim();
     getIndex();
@@ -109,6 +104,7 @@ function generateList() {
 // This is to create a click handler on the saved city list
 // Clicking on a city in the list, will display that city's weather
 $(document).on("click", ".list-group-item", function() {
+    $(".forecastContainer").empty(); // This is removing the forecast cards before new ones are created and appended
     $("#searchInput").val($(this).text());
     getWeather();
 });
