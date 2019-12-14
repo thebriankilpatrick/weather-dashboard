@@ -16,9 +16,34 @@
     margin: 10px 0 0 10px;
 }
 
+/* Adding padding to the dynamically created forecast cards */
+.forecastCard {
+    padding: 5px;
+}
+
+
+/* Media Queries for responsiveness */
+@media only screen and (max-width: 400px) {
+    .col-3 {
+        padding: 0;
+    }
+}
 
 @media only screen and (max-width: 575px) {
     #searchInput {  /* For Navbar responsiveness */
         width: 180px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        margin: 0;
+        padding: 0;
+        max-width: 100% !important;
+    }
+    .list-group-item {
+        font-size: 14px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }

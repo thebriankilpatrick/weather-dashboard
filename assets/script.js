@@ -43,8 +43,8 @@ function getWeather() {
             var arrayLength = response.list.length;
             for (var i = 0; i < arrayLength; i += 8) {
                 
-                var forecastCard = $("<div class='card text-white bg-info mb-3 float-left'>");
-                $(".forecastContainer").append(forecastCard); // See if float left works
+                var forecastCard = $("<div class='card text-white bg-info mb-3 float-left forecastCard'>");
+                $(".forecastContainer").append(forecastCard); 
                 var dt = response.list[i].dt_txt  // Grabbing date from forecast
                 var dateFixed = moment(dt, "YYYY.MM.DD").format("MM/DD/YYYY");  // Changing format of date, using moment.js
                 forecastCard.append($("<div class='card-header'>").text(dateFixed));
@@ -114,10 +114,19 @@ generateList();
 // Displays the last searched city's forecast on page load
 function lastForecasted() {
     var last = parseInt(localStorage.getItem("index"));
-    last -= 1;
-    var result = localStorage.getItem("userInput" + last);
-    $("#searchInput").val(result).text();
-    getWeather();
+    console.log(last);
+    if (localStorage.getItem("index") === null) { // If no cities have been searched, the default city will be Richmond
+        var cityDefault = $("#cityDefault").text();
+        console.log(cityDefault);
+        $("#searchInput").val(cityDefault).text();
+        getWeather();
+    }
+    else {
+        last -= 1;
+        var result = localStorage.getItem("userInput" + last);
+        $("#searchInput").val(result).text();
+        getWeather();
+    }
 }
 
 lastForecasted();
