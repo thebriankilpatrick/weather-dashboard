@@ -13,7 +13,7 @@ You can use the search bar, at the top of the page, to search for a city to disp
 After searching for a city, that city is saved in the user's local storage, and is then displayed in a card, as shown below.  
 You can click on a city on the card, to also display that city's weather and forecast.  
 
-
+![citySnip](https://user-images.githubusercontent.com/43326943/70873841-86227680-1f7d-11ea-8a28-24ec5ef13ddd.PNG)  
 
 ### Tech / Frameworks Used  
 * jQuery  
