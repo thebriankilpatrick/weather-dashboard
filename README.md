@@ -2,6 +2,7 @@
 What follow is the week six homework for the University of Richmond's Coding Boot Camp.  
 The Weather Dashboard is the one-stop web application, where you can plan your  
 days, trips, and vacations accordingly, by checking the forecasted weather in any city in the US.  
+[Link to Weather Dashboard](https://thebriankilpatrick.github.io/weather-dashboard/)  
 
 ### Uses and How to Use  
 
