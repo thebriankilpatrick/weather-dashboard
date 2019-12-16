@@ -8,7 +8,7 @@ days, trips, and vacations accordingly, by checking the forecasted weather in an
 When you first navigate to the site, your eyes are drawn to the current weather that is displayed, as shown below.  
 You can use the search bar, at the top of the page, to search for a city to display its weather and forecast.  
 
-
+![Screenshot](https://user-images.githubusercontent.com/43326943/70873819-64c18a80-1f7d-11ea-82ca-ee2dce66aaef.PNG)  
 
 After searching for a city, that city is saved in the user's local storage, and is then displayed in a card, as shown below.  
 You can click on a city on the card, to also display that city's weather and forecast.  
