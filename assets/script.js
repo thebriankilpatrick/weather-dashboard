@@ -6,26 +6,33 @@ function getWeather() {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        console.log(response);
+        // This displays the city name, based on the call's response
         $("#cityText").text(response.name);
 
+        // This displays the current weather icon image
         var iconCode = response.weather[0].icon;
         var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
         $("#iconContainer").append("<img id='iconImage'>");
         $("#iconImage").attr("src", iconURL);
 
+        // Converting temperature to fahrenheit, and then displaying it
         var tempKelvin = response.main.temp;
         var tempFahr = (((tempKelvin - 273.15) * 1.8) + 32);
         $("#tempText").text("Temperature: " + tempFahr.toFixed() + "\xB0" + "F");
+
+        // Displaying the humidity and wind speed
         $("#humidityText").text("Humidity: " + response.main.humidity + "%");
         $("#windText").text("Wind speed: " + response.wind.speed + "mph");
         $(".weatherContainer").css("border", "solid 1px lightgray");
 
+        // Pulling the longitute and latitude from the call's response.
+        // This is necessary for the UV Index call
         var lon = response.coord.lon;
         var lat = response.coord.lat;
 
         var queryUVURL = "http://api.openweathermap.org/data/2.5/uvi?appid=942ae6ca747eb423646036b5684169fa&lat=" + lat + "&lon=" + lon;
 
+        // Calling this API to get the UV Index of the city, and displaying it
         $.ajax({ 
         url: queryUVURL,
         method: "GET"
@@ -35,22 +42,25 @@ function getWeather() {
 
         var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + $("#searchInput").val() + ",us&appid=942ae6ca747eb423646036b5684169fa";
 
+        // Calling the 5 day forecast, dynamically creating the elements and storing the response
         $.ajax({
             url: forecastURL,
             method: "GET"
         }).then(function(response) {  
            
             var arrayLength = response.list.length;
+            // For loop to get the forecast for the next 5 days
+            // i += 8, to loop exactly every 24 hours in the forecast response
             for (var i = 0; i < arrayLength; i += 8) {
                 
-                var forecastCard = $("<div class='card text-white bg-info mb-3 float-left forecastCard'>");
+                var forecastCard = $("<div class='card text-white bg-info mb-3 float-left forecastCard'>"); // Dynamically creating bootstrap element
                 $(".forecastContainer").append(forecastCard); 
                 var dt = response.list[i].dt_txt  // Grabbing date from forecast
                 var dateFixed = moment(dt, "YYYY.MM.DD").format("MM/DD/YYYY");  // Changing format of date, using moment.js
                 forecastCard.append($("<div class='card-header'>").text(dateFixed));
-    
+ 
+                // Pulling the image, for each day, and displays them in each card created
                 var iconCode = response.list[i].weather[0].icon;
-                console.log(iconCode);
                 var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
                 var forecastImage = $("<img>").attr("src", iconURL).css("width", "50%");
                 forecastCard.append(forecastImage);
@@ -92,6 +102,7 @@ $("#searchBtn").on("click", function(event) {
     getWeather();
 })
 
+// This function is to pull the list of searched cities from localStorage, and display them
 function generateList() {
     var x = localStorage.getItem("index");
     for (var i = 0; i < x; i++) {
@@ -117,7 +128,6 @@ function lastForecasted() {
     console.log(last);
     if (localStorage.getItem("index") === null) { // If no cities have been searched, the default city will be Richmond
         var cityDefault = $("#cityDefault").text();
-        console.log(cityDefault);
         $("#searchInput").val(cityDefault).text();
         getWeather();
     }

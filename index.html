@@ -6,8 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="assets/style.css">
-        <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
-        
+        <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>       
     </head>
 
     <body>
@@ -21,7 +20,7 @@
             </form>
         </nav>
 
-        <div class="container">
+        <div class="container"> <!--This is where the searched cities will be saved and displayed-->
             <div class="row">
                 <div class="col-3">
                     <div class="card">
@@ -32,7 +31,7 @@
                 </div>
 
                 <div class="col-9">
-                    <div class="weatherContainer">
+                    <div class="weatherContainer"> <!--This is where the weather is displayed-->
                         <h2 id="cityText" class="float-left"></h2>
                         <div id="iconContainer"></div>
                         <p id="tempText"></p>
@@ -40,13 +39,10 @@
                         <p id="windText"></p>
                         <p id="uVText"></p>
                     </div>
-                    <div class="forecastContainer"></div>
+                    <div class="forecastContainer"></div> <!--This is where the 5 day forecast is displayed-->
                 </div>
             </div>
         </div>
-
-
-
         <script src="assets/script.js"></script>
     </body>
 </html>
