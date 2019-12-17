@@ -11,7 +11,7 @@ function getWeather() {
 
         // This displays the current weather icon image
         var iconCode = response.weather[0].icon;
-        var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+        var iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
         $("#iconContainer").append("<img id='iconImage'>");
         $("#iconImage").attr("src", iconURL);
 
@@ -30,7 +30,7 @@ function getWeather() {
         var lon = response.coord.lon;
         var lat = response.coord.lat;
 
-        var queryUVURL = "http://api.openweathermap.org/data/2.5/uvi?appid=942ae6ca747eb423646036b5684169fa&lat=" + lat + "&lon=" + lon;
+        var queryUVURL = "https://api.openweathermap.org/data/2.5/uvi?appid=942ae6ca747eb423646036b5684169fa&lat=" + lat + "&lon=" + lon;
 
         // Calling this API to get the UV Index of the city, and displaying it
         $.ajax({ 
@@ -61,7 +61,7 @@ function getWeather() {
  
                 // Pulling the image, for each day, and displays them in each card created
                 var iconCode = response.list[i].weather[0].icon;
-                var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+                var iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
                 var forecastImage = $("<img>").attr("src", iconURL).css("width", "50%");
                 forecastCard.append(forecastImage);
                 
